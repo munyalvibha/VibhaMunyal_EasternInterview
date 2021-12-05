@@ -1,0 +1,37 @@
+﻿@model BlogWebsite.Bal.UserModel
+@{
+    ViewBag.Title = "Profile";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<h2>Profile</h2>
+@if(ViewBag.ErrorMessage!=null)
+{
+    @ViewBag.ErrorMessage
+}
+<div class="row">
+    <div class="col-sm-12">
+        <div class="table-responsive">
+            <table id="tblProfile" class="table  mb-0">
+                
+                <tbody>
+                    <tr>
+                        <td><label for="Email" class="col-sm-4 col-form-label">Email</label></td>
+                        <td><input type="text" readonly class="form-control-plaintext" id="Email" value="@Model.Email"></td>
+                    </tr>
+                    @if(@Model.PhoneNumber!=null){
+                    <tr>
+                        <td><label for="PhoneNumber" class="col-sm-4 col-form-label">Phone Number</label></td>
+                        <td><input type="text" readonly class="form-control-plaintext" id="PhoneNumber" value="@Model.PhoneNumber"></td>
+                    </tr>
+                    }
+
+                    <tr>
+                        <td><label for="Username" class="col-sm-4 col-form-label">UserName</label></td>
+                        <td><input type="text" readonly class="form-control-plaintext" id="Username" value="@Model.UserName"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

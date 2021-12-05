@@ -1,0 +1,17 @@
+D:\VibhaMuyal_Eastern_Interview\BlogWebsite\BlogWebsite.Repository\bin\Debug\BlogWebsite.Repository.dll.config
+D:\VibhaMuyal_Eastern_Interview\BlogWebsite\BlogWebsite.Repository\bin\Debug\BlogWebsite.Repository.dll
+D:\VibhaMuyal_Eastern_Interview\BlogWebsite\BlogWebsite.Repository\bin\Debug\BlogWebsite.Repository.pdb
+D:\VibhaMuyal_Eastern_Interview\BlogWebsite\BlogWebsite.Repository\bin\Debug\BlogWebsite.Bal.dll
+D:\VibhaMuyal_Eastern_Interview\BlogWebsite\BlogWebsite.Repository\bin\Debug\BlogWebsite.Dal.dll
+D:\VibhaMuyal_Eastern_Interview\BlogWebsite\BlogWebsite.Repository\bin\Debug\EntityFramework.dll
+D:\VibhaMuyal_Eastern_Interview\BlogWebsite\BlogWebsite.Repository\bin\Debug\EntityFramework.SqlServer.dll
+D:\VibhaMuyal_Eastern_Interview\BlogWebsite\BlogWebsite.Repository\bin\Debug\BlogWebsite.Bal.pdb
+D:\VibhaMuyal_Eastern_Interview\BlogWebsite\BlogWebsite.Repository\bin\Debug\BlogWebsite.Dal.pdb
+D:\VibhaMuyal_Eastern_Interview\BlogWebsite\BlogWebsite.Repository\bin\Debug\BlogWebsite.Dal.dll.config
+D:\VibhaMuyal_Eastern_Interview\BlogWebsite\BlogWebsite.Repository\bin\Debug\EntityFramework.xml
+D:\VibhaMuyal_Eastern_Interview\BlogWebsite\BlogWebsite.Repository\bin\Debug\EntityFramework.SqlServer.xml
+D:\VibhaMuyal_Eastern_Interview\BlogWebsite\BlogWebsite.Repository\obj\Debug\BlogWebsite.Repository.csprojAssemblyReference.cache
+D:\VibhaMuyal_Eastern_Interview\BlogWebsite\BlogWebsite.Repository\obj\Debug\BlogWebsite.Repository.csproj.CoreCompileInputs.cache
+D:\VibhaMuyal_Eastern_Interview\BlogWebsite\BlogWebsite.Repository\obj\Debug\BlogWebsite.Repository.csproj.CopyComplete
+D:\VibhaMuyal_Eastern_Interview\BlogWebsite\BlogWebsite.Repository\obj\Debug\BlogWebsite.Repository.dll
+D:\VibhaMuyal_Eastern_Interview\BlogWebsite\BlogWebsite.Repository\obj\Debug\BlogWebsite.Repository.pdb

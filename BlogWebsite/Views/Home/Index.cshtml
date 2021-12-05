@@ -1,0 +1,81 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Blog List</h4>
+            </div>
+            <div class="card-body">
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="table-responsive">
+                            <table id="tblBlog" class="table  mb-0">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th>Sr. No</th>
+                                        <th>Blog Title</th>
+                                        <th>Author</th>
+                                        <th>Created Date</th>
+                                        <th>Like Count</th>
+                                        <th>View Blog</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tblBlogBody"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+
+    $(document).ready(function () {
+        GetBlog();
+    });
+
+    function ViewBlog(blogid) {
+        window.location.href = "/Home/BlogDetail?blogId=" + blogid;
+    }
+
+    function GetBlog() {
+        $.ajax({
+            url: "/Home/GetBlog",
+            type: "GET",
+            contentType: "application/json; charset=utf-8",
+            data: "{}",
+            dataType: "json",
+            success: function (data) {
+                if (data != null) {
+                    var row = "";
+                    $.each(data, function (index, item) {
+                        row += "<tr>";
+                        row += "<td>" + parseInt(index + 1) + "</td>";
+                        row += "<td>" + item.BlogTitle + "</td>";
+                        row += "<td>" + moment(item.CreatedDate).format("DD/MM/YYYY hh:mm:ss a") + "</td>";
+                        row += "<td>" + item.UserId + "</td>";
+                        row += "<td>" + item.likeCount + "</td>";
+                        row += "<td><button type='button' onclick='ViewBlog(" + item.BlogId + ")' class='btn btn-sm btn-warning me-1' data-id='" + item.BlogId + "'>View Blog</a></td>";
+                        row += "</tr>";
+                    });
+                    $("#tblBlogBody").html(row);
+                }
+                else {
+                    $("#tblBlogBody").html("<tr><td colspan=6>No Data Found</td></tr>");
+                }
+               
+            },
+            error: function (result) {
+                $("#tblBlogBody").html("<tr><td colspan=6>No Data Found</td></tr>");
+            }
+        });
+    }
+</script>

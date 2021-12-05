@@ -1,0 +1,6 @@
+D:\VibhaMuyal_Eastern_Interview\BlogWebsite\BlogWebsite.Bal\bin\Debug\BlogWebsite.Bal.dll
+D:\VibhaMuyal_Eastern_Interview\BlogWebsite\BlogWebsite.Bal\bin\Debug\BlogWebsite.Bal.pdb
+D:\VibhaMuyal_Eastern_Interview\BlogWebsite\BlogWebsite.Bal\obj\Debug\BlogWebsite.Bal.csprojAssemblyReference.cache
+D:\VibhaMuyal_Eastern_Interview\BlogWebsite\BlogWebsite.Bal\obj\Debug\BlogWebsite.Bal.csproj.CoreCompileInputs.cache
+D:\VibhaMuyal_Eastern_Interview\BlogWebsite\BlogWebsite.Bal\obj\Debug\BlogWebsite.Bal.dll
+D:\VibhaMuyal_Eastern_Interview\BlogWebsite\BlogWebsite.Bal\obj\Debug\BlogWebsite.Bal.pdb

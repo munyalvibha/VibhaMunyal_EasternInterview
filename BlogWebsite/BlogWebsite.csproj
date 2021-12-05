@@ -1,0 +1,457 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C6375D47-12E2-43E1-BADC-4D265F773F37}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BlogWebsite</RootNamespace>
+    <AssemblyName>BlogWebsite</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44392</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.3\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.3\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.3\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.4.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.4.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.4.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.4.0.1\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.4.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.4.0.1\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.4.0.1\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.4.0.1\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.4.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BlogController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\css\app.min.css" />
+    <Content Include="assets\css\bootstrap.min.css" />
+    <Content Include="assets\css\layoutchange.css" />
+    <Content Include="assets\js\app.js" />
+    <Content Include="assets\plugins\moment\locale\af.js" />
+    <Content Include="assets\plugins\moment\locale\ar-dz.js" />
+    <Content Include="assets\plugins\moment\locale\ar-kw.js" />
+    <Content Include="assets\plugins\moment\locale\ar-ly.js" />
+    <Content Include="assets\plugins\moment\locale\ar-ma.js" />
+    <Content Include="assets\plugins\moment\locale\ar-sa.js" />
+    <Content Include="assets\plugins\moment\locale\ar-tn.js" />
+    <Content Include="assets\plugins\moment\locale\ar.js" />
+    <Content Include="assets\plugins\moment\locale\az.js" />
+    <Content Include="assets\plugins\moment\locale\be.js" />
+    <Content Include="assets\plugins\moment\locale\bg.js" />
+    <Content Include="assets\plugins\moment\locale\bm.js" />
+    <Content Include="assets\plugins\moment\locale\bn-bd.js" />
+    <Content Include="assets\plugins\moment\locale\bn.js" />
+    <Content Include="assets\plugins\moment\locale\bo.js" />
+    <Content Include="assets\plugins\moment\locale\br.js" />
+    <Content Include="assets\plugins\moment\locale\bs.js" />
+    <Content Include="assets\plugins\moment\locale\ca.js" />
+    <Content Include="assets\plugins\moment\locale\cs.js" />
+    <Content Include="assets\plugins\moment\locale\cv.js" />
+    <Content Include="assets\plugins\moment\locale\cy.js" />
+    <Content Include="assets\plugins\moment\locale\da.js" />
+    <Content Include="assets\plugins\moment\locale\de-at.js" />
+    <Content Include="assets\plugins\moment\locale\de-ch.js" />
+    <Content Include="assets\plugins\moment\locale\de.js" />
+    <Content Include="assets\plugins\moment\locale\dv.js" />
+    <Content Include="assets\plugins\moment\locale\el.js" />
+    <Content Include="assets\plugins\moment\locale\en-au.js" />
+    <Content Include="assets\plugins\moment\locale\en-ca.js" />
+    <Content Include="assets\plugins\moment\locale\en-gb.js" />
+    <Content Include="assets\plugins\moment\locale\en-ie.js" />
+    <Content Include="assets\plugins\moment\locale\en-il.js" />
+    <Content Include="assets\plugins\moment\locale\en-in.js" />
+    <Content Include="assets\plugins\moment\locale\en-nz.js" />
+    <Content Include="assets\plugins\moment\locale\en-sg.js" />
+    <Content Include="assets\plugins\moment\locale\eo.js" />
+    <Content Include="assets\plugins\moment\locale\es-do.js" />
+    <Content Include="assets\plugins\moment\locale\es-mx.js" />
+    <Content Include="assets\plugins\moment\locale\es-us.js" />
+    <Content Include="assets\plugins\moment\locale\es.js" />
+    <Content Include="assets\plugins\moment\locale\et.js" />
+    <Content Include="assets\plugins\moment\locale\eu.js" />
+    <Content Include="assets\plugins\moment\locale\fa.js" />
+    <Content Include="assets\plugins\moment\locale\fi.js" />
+    <Content Include="assets\plugins\moment\locale\fil.js" />
+    <Content Include="assets\plugins\moment\locale\fo.js" />
+    <Content Include="assets\plugins\moment\locale\fr-ca.js" />
+    <Content Include="assets\plugins\moment\locale\fr-ch.js" />
+    <Content Include="assets\plugins\moment\locale\fr.js" />
+    <Content Include="assets\plugins\moment\locale\fy.js" />
+    <Content Include="assets\plugins\moment\locale\ga.js" />
+    <Content Include="assets\plugins\moment\locale\gd.js" />
+    <Content Include="assets\plugins\moment\locale\gl.js" />
+    <Content Include="assets\plugins\moment\locale\gom-deva.js" />
+    <Content Include="assets\plugins\moment\locale\gom-latn.js" />
+    <Content Include="assets\plugins\moment\locale\gu.js" />
+    <Content Include="assets\plugins\moment\locale\he.js" />
+    <Content Include="assets\plugins\moment\locale\hi.js" />
+    <Content Include="assets\plugins\moment\locale\hr.js" />
+    <Content Include="assets\plugins\moment\locale\hu.js" />
+    <Content Include="assets\plugins\moment\locale\hy-am.js" />
+    <Content Include="assets\plugins\moment\locale\id.js" />
+    <Content Include="assets\plugins\moment\locale\is.js" />
+    <Content Include="assets\plugins\moment\locale\it-ch.js" />
+    <Content Include="assets\plugins\moment\locale\it.js" />
+    <Content Include="assets\plugins\moment\locale\ja.js" />
+    <Content Include="assets\plugins\moment\locale\jv.js" />
+    <Content Include="assets\plugins\moment\locale\ka.js" />
+    <Content Include="assets\plugins\moment\locale\kk.js" />
+    <Content Include="assets\plugins\moment\locale\km.js" />
+    <Content Include="assets\plugins\moment\locale\kn.js" />
+    <Content Include="assets\plugins\moment\locale\ko.js" />
+    <Content Include="assets\plugins\moment\locale\ku.js" />
+    <Content Include="assets\plugins\moment\locale\ky.js" />
+    <Content Include="assets\plugins\moment\locale\lb.js" />
+    <Content Include="assets\plugins\moment\locale\lo.js" />
+    <Content Include="assets\plugins\moment\locale\lt.js" />
+    <Content Include="assets\plugins\moment\locale\lv.js" />
+    <Content Include="assets\plugins\moment\locale\me.js" />
+    <Content Include="assets\plugins\moment\locale\mi.js" />
+    <Content Include="assets\plugins\moment\locale\mk.js" />
+    <Content Include="assets\plugins\moment\locale\ml.js" />
+    <Content Include="assets\plugins\moment\locale\mn.js" />
+    <Content Include="assets\plugins\moment\locale\mr.js" />
+    <Content Include="assets\plugins\moment\locale\ms-my.js" />
+    <Content Include="assets\plugins\moment\locale\ms.js" />
+    <Content Include="assets\plugins\moment\locale\mt.js" />
+    <Content Include="assets\plugins\moment\locale\my.js" />
+    <Content Include="assets\plugins\moment\locale\nb.js" />
+    <Content Include="assets\plugins\moment\locale\ne.js" />
+    <Content Include="assets\plugins\moment\locale\nl-be.js" />
+    <Content Include="assets\plugins\moment\locale\nl.js" />
+    <Content Include="assets\plugins\moment\locale\nn.js" />
+    <Content Include="assets\plugins\moment\locale\oc-lnc.js" />
+    <Content Include="assets\plugins\moment\locale\pa-in.js" />
+    <Content Include="assets\plugins\moment\locale\pl.js" />
+    <Content Include="assets\plugins\moment\locale\pt-br.js" />
+    <Content Include="assets\plugins\moment\locale\pt.js" />
+    <Content Include="assets\plugins\moment\locale\ro.js" />
+    <Content Include="assets\plugins\moment\locale\ru.js" />
+    <Content Include="assets\plugins\moment\locale\sd.js" />
+    <Content Include="assets\plugins\moment\locale\se.js" />
+    <Content Include="assets\plugins\moment\locale\si.js" />
+    <Content Include="assets\plugins\moment\locale\sk.js" />
+    <Content Include="assets\plugins\moment\locale\sl.js" />
+    <Content Include="assets\plugins\moment\locale\sq.js" />
+    <Content Include="assets\plugins\moment\locale\sr-cyrl.js" />
+    <Content Include="assets\plugins\moment\locale\sr.js" />
+    <Content Include="assets\plugins\moment\locale\ss.js" />
+    <Content Include="assets\plugins\moment\locale\sv.js" />
+    <Content Include="assets\plugins\moment\locale\sw.js" />
+    <Content Include="assets\plugins\moment\locale\ta.js" />
+    <Content Include="assets\plugins\moment\locale\te.js" />
+    <Content Include="assets\plugins\moment\locale\tet.js" />
+    <Content Include="assets\plugins\moment\locale\tg.js" />
+    <Content Include="assets\plugins\moment\locale\th.js" />
+    <Content Include="assets\plugins\moment\locale\tk.js" />
+    <Content Include="assets\plugins\moment\locale\tl-ph.js" />
+    <Content Include="assets\plugins\moment\locale\tlh.js" />
+    <Content Include="assets\plugins\moment\locale\tr.js" />
+    <Content Include="assets\plugins\moment\locale\tzl.js" />
+    <Content Include="assets\plugins\moment\locale\tzm-latn.js" />
+    <Content Include="assets\plugins\moment\locale\tzm.js" />
+    <Content Include="assets\plugins\moment\locale\ug-cn.js" />
+    <Content Include="assets\plugins\moment\locale\uk.js" />
+    <Content Include="assets\plugins\moment\locale\ur.js" />
+    <Content Include="assets\plugins\moment\locale\uz-latn.js" />
+    <Content Include="assets\plugins\moment\locale\uz.js" />
+    <Content Include="assets\plugins\moment\locale\vi.js" />
+    <Content Include="assets\plugins\moment\locale\x-pseudo.js" />
+    <Content Include="assets\plugins\moment\locale\yo.js" />
+    <Content Include="assets\plugins\moment\locale\zh-cn.js" />
+    <Content Include="assets\plugins\moment\locale\zh-hk.js" />
+    <Content Include="assets\plugins\moment\locale\zh-mo.js" />
+    <Content Include="assets\plugins\moment\locale\zh-tw.js" />
+    <Content Include="assets\plugins\moment\moment.js" />
+    <Content Include="assets\plugins\moment\moment.min.js" />
+    <Content Include="assets\plugins\parsleyjs\parsley.min.js" />
+    <Content Include="assets\plugins\toastr\css\toastr.min.css" />
+    <Content Include="assets\plugins\toastr\js\toastr.min.js" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Account\ConfirmEmail.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
+    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\SendCode.cshtml" />
+    <Content Include="Views\Account\VerifyCode.cshtml" />
+    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
+    <Content Include="Views\Manage\ChangePassword.cshtml" />
+    <Content Include="Views\Manage\Index.cshtml" />
+    <Content Include="Views\Manage\ManageLogins.cshtml" />
+    <Content Include="Views\Manage\SetPassword.cshtml" />
+    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
+    <Content Include="Views\Shared\Lockout.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Shared\_LayoutUser.cshtml" />
+    <Content Include="Views\User\Profile.cshtml" />
+    <Content Include="Views\Blog\Blog.cshtml" />
+    <Content Include="Views\Home\BlogDetail.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BlogWebsite.Bal\BlogWebsite.Bal.csproj">
+      <Project>{c9e2ded8-86f2-4c61-9883-4977c17d8c61}</Project>
+      <Name>BlogWebsite.Bal</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BlogWebsite.Dal\BlogWebsite.Dal.csproj">
+      <Project>{a850cd31-afae-4507-8eff-bd381e1a4613}</Project>
+      <Name>BlogWebsite.Dal</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BlogWebsite.Repository\BlogWebsite.Repository.csproj">
+      <Project>{48914acc-47fe-4e86-94b3-ef76ce14214a}</Project>
+      <Name>BlogWebsite.Repository</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>59902</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44392/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

@@ -1,0 +1,343 @@
+﻿@{
+    ViewBag.Title = "Blog";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<h2>Blog</h2>
+
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Blog List</h4>
+            </div>
+            <div class="card-body">
+
+                <div class="row mb-3">
+                    <div class="float-end">
+                        <button id="btnAddblog" class="btn btn-success waves-effect float-end"><i class="fa fa-plus-circle"></i> Add Blog</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="table-responsive">
+                            <table id="tblBlog" class="table  mb-0">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th>Sr. No</th>
+                                        <th>Blog Title</th>
+                                        <th>Blog Description</th>
+                                        <th>Blog Category</th>
+                                        <th>Created Date</th>
+                                        <th>Edit</th>
+                                        <th>Delete</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tblBlogBody"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalConfirm" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle-1">
+                    Confirmation
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h5>Are you sure ?</h5>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btnCancelConfirmation" class="btn btn-danger filter-close" data-bs-dismiss="modal">
+                    No
+                </button>
+                <button type="button" id="btnSaveChanges" class="btn btn-primary">
+                    Yes
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="mdlAddUpdate" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form id="addupdate" data-parsley-validate="">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="lblModalTitle">
+                        Confirmation
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group mb-0" id="divCategory">
+                        <label class="mb-2 pb-1">Category Name</label>
+                        <select class="form-control" id="ddlCategory" data-parsley-required="true"></select>
+                    </div>
+                    <div class="form-group mb-0">
+                        <label class="mb-2 pb-1">Blog Title</label>
+                        <input type="text" id="txtBlogTitle" class="form-control" required placeholder="Enter blog title.">
+                    </div>
+                    <div class="form-group mb-0">
+                        <label class="mb-2 pb-1">Blog Description</label>
+                        <input type="text" id="txtBlogDescription" class="form-control" required placeholder="Enter blog description.">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btnCancel" class="btn btn-danger filter-close" data-bs-dismiss="modal" data-parsley-validate="false">
+                        Cancel
+                    </button>
+                    <button type="button" id="btnAddUpdate" class="btn btn-primary">
+                        Add Blog
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        GetBlog();
+    });
+
+
+    $('body').on('click', '#btnAddblog', function () {
+        $('body').addClass('filter-open');
+        $("#lblModalTitle").html("Add Blog");
+        $("#btnAddUpdate").html("Add Blog");
+        $("#mdlAddUpdate").modal({ backdrop: 'static', keyboard: false });
+        $.ajax({
+            url: "/Blog/GetCategory",
+            type: "GET",
+            success: function (response) {
+                if (response.length > 0) {
+                    $('#ddlCategory').html('');
+                    var options = '';
+                    options += '<option value="">--Select--</option>';
+                    $(response).each(function (index, element) {
+                        options += '<option value="' + element.CategoryId + '">' + element.CategoryName + '</option>';
+                    });
+
+                    $('#ddlCategory').html(options);
+                    $("#divCategory").show();
+                    $("#mdlAddUpdate").modal("show");
+                }
+                else {
+                    toastr.error("Something went wrong!");
+                    $("#mdlAddUpdate").modal("hide");
+                }
+            },
+            error: function (result) {
+                toastr.error("Something went wrong!");
+                $("#mdlAddUpdate").modal("hide");
+            }
+        });
+        isadd = true;
+        reserValues();
+    });
+
+    $('body').on('click', '#btnAddUpdate', function () {
+         var form = $('#addupdate').parsley();
+        var formData = new FormData();
+        
+        if (form.isValid()) {
+            formData.append("BlogTitle", $("#txtBlogTitle").val());
+            formData.append("BlogDescription", $("#txtBlogDescription").val());
+
+            if (isadd) {
+                formData.append("CategoryId", $('#ddlCategory :selected').val());
+                $.ajax({
+                    type: "POST",
+                    url: "/Blog/AddBlog",
+                    dataType: 'json',
+                    contentType: false,
+                    processData: false,
+                    data: formData,
+                    success: function (data) {
+                        if (data.code == -1) {
+                            toastr.error(data.message);
+                        }
+                        else if (data.code == 1) {
+                            reserValues();
+                            $('#mdlAddUpdate').modal('hide');
+                            GetBlog();
+                            toastr.success(data.message);
+                        }
+                    },
+                    error: function () {
+                        toastr.error('Something went wrong.');
+                    }
+                });
+            }
+            else {
+                formData.append("BlogId", id);
+                $.ajax({
+                    type: "POST",
+                    url: "/Blog/UpdateBlog",
+                    dataType: 'json',
+                    contentType: false,
+                    processData: false,
+                    data: formData,
+                    success: function (data) {
+                        $('#mdlAddUpdate').modal('hide');
+                        GetBlog();
+                        toastr.success('Blog updated successfully.');
+                    },
+                    error: function () {
+                        toastr.error('Something went wrong.');
+                    }
+                });
+            }
+        }
+        else if (!isadd) {
+            formData.append("BlogId", eid);
+            formData.append("BlogTitle", $("#txtBlogTitle").val());
+            formData.append("BlogDescription", $("#txtBlogDescription").val());
+       
+       
+                if ($("#txtBlogTitle").val() != null && $("#txtBlogTitle").val() != '' && $("#txtBlogDescription").val() != null && $("#txtBlogDescription").val() != '') {
+            
+                    $.ajax({
+                        type: "POST",
+                        url: "/Blog/UpdateBlog",
+                        dataType: 'json',
+                        contentType: false,
+                        processData: false,
+                        data: formData,
+                        success: function (data) {
+                            $('#mdlAddUpdate').modal('hide');
+                            GetBlog();
+                            toastr.success('Blog updated successfully.');
+                        },
+                        error: function () {
+                            toastr.error('Something went wrong.');
+                        }
+                    });
+            
+
+                }
+                else {
+                    toastr.error("Value(s) cannot be empty");
+                }
+
+        }
+        else {
+            $('#addupdate').submit();
+        }
+    });
+
+    $('body').on('click', '#btnSaveChanges', function () {
+        var formData = new FormData();
+        formData.append("Id", deleteId);
+            $.ajax({
+                type: "POST",
+                url: "/Blog/DeleteBlog",
+                dataType: 'json',
+                contentType: false,
+                processData: false,
+                data: formData,
+                success: function (data) {
+                    $('#modalConfirm').modal('hide');
+                    GetBlog();
+                    toastr.success('Blog deleted successfully.');
+                },
+                error: function () {
+                    toastr.error('Something went wrong.');
+                }
+            });
+        });
+
+        function reserValues() {
+            $("#txtBlogDescription").val("");
+            $("#txtBlogTitle").val("");
+            $('#ddlCategory :selected').val("");
+            form = $('#addupdate').parsley().reset();
+        }
+
+        function EditBlog(id) {
+            $("#mdlAddUpdate").modal({ backdrop: 'static', keyboard: false });
+            $.ajax({
+                type: "GET",
+                url: "/Blog/GetBlogById?id=" + id,
+                dataType: 'json',
+                contentType: false,
+                processData: false,
+                success: function (data) {
+                    reserValues();
+
+                    $("#lblModalTitle").html("Update Blog");
+                    $("#btnAddUpdate").html("Update Blog");
+                    $("#txtBlogTitle").val(data.BlogTitle);
+                    $("#txtBlogDescription").val(data.BlogDescription);
+                
+                    $("#divCategory").hide();
+                    isadd = false;
+                    eid = id;
+                    $('#mdlAddUpdate').modal('show');
+
+                },
+                error: function () {
+                    toastr.error('Something went wrong.');
+                }
+            });
+        }
+
+        function deleteBlog(id) {
+        deleteId = id;
+        $("#modalConfirm").modal({ backdrop: 'static', keyboard: false });
+        $("#modalConfirm").modal("show");
+        }
+
+        function GetBlog() {
+        
+            $.ajax({
+                url: "/Blog/GetBlog",
+                type: "GET",
+                contentType: "application/json; charset=utf-8",
+                data: "{}",
+                dataType: "json",
+                success: function (data) {
+                    if (data != null) {
+                        var row = "";
+                        $.each(data, function (index, item) {
+                            row += "<tr>";
+                            row += "<td>" + parseInt(index + 1) + "</td>";
+                            row += "<td>" + item.BlogTitle + "</td>";
+                            row += "<td>" + item.BlogDescription + "</td>";
+                            row += "<td>" + item.Categoryname + "</td>";
+                            row += "<td>" + moment(item.CreatedDate).format("DD/MM/YYYY hh:mm:ss a") + "</td>";
+                            row += "<td><button type='button' onclick='EditBlog(" + item.BlogId + ")' class='btn btn-sm btn-warning me-1' data-id='" + item.BlogId + "'>Edit</a></td>";
+                            if (!item.IsDeleted)
+                                row += "<td><a class='btn  btn-sm btn-danger me-1' href='#' onclick='deleteBlog(" + item.BlogId + ")'>Delete</a></td>";
+                            else
+                                row += "<td><a class='btn  btn-sm btn-success me-1' href='#' onclick='deleteBlog(" + item.BlogId + ")'>Restore</a></td>";
+                            row += "</tr>";
+                        });
+                        $("#tblBlogBody").html(row);
+                    }
+                    else {
+                        $("#tblBlogBody").html("<tr><td colspan=7 style='text-align:center'>No Data Found</td></tr>");
+                    }
+                    
+                },
+                error: function (result) {
+                    $("#tblBlogBody").html("<tr><td colspan=7 style='text-align:center'>No Data Found</td></tr>");
+                }
+            });
+        }
+
+</script>
+
